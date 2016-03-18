@@ -48,9 +48,34 @@ public class Ruangan {
         return jumlahPasien;
     }
 
-    public PasienInap getDaftarPasien(int i) {
+    public PasienInap getDaftarPasienByIndex(int i) {
         return daftarPasien[i];
     }
+
+    public PasienInap getDaftarPasienById(int id) {
+        int i = 0;
+        while(daftarPasien[i].getPasien().getId() != id){
+            i++;
+        }
+        return daftarPasien[i];
+        
+        
+    }
+    
+    public void deletePasienInap(int i){
+        if(daftarPasien[i+1]==null){
+            daftarPasien[i]=null;
+            jumlahPasien = jumlahPasien-1;
+        }else {
+            for(int j = i;j<jumlahPasien;j++){
+                daftarPasien[j]=daftarPasien[j+1];
+                jumlahPasien = jumlahPasien-1;
+            }
+        }
+        
+    }
+    
+    
     
     
     

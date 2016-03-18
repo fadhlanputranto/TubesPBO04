@@ -15,25 +15,31 @@ public class PasienInap {
     private String[] diagnosa = new String[20];
     private int nDiagnosa;
 
+    public PasienInap() {
+    }
+    
     public PasienInap(Pasien p, Dokter d) {
         pasien = p;
         setDokter(d);
-    }
-
-    public void setDokter(Dokter d) {
-        dokter = d;
     }
 
     public void addDiagnosa(String diagnosa) {
         if(nDiagnosa < 20){
             this.diagnosa[nDiagnosa] = diagnosa;
             nDiagnosa++;
-        }else System.out.println("Penuh");
-        
+        }else System.out.println("Penuh");    
     }
-
+    
+    public void setDokter(Dokter d) {
+        dokter = d;
+    }
+    
     public Dokter getDokter() {
         return dokter;
+    }
+
+    public void setPasien(Pasien pasien) {
+        this.pasien = pasien;
     }
 
     public Pasien getPasien() {
@@ -48,12 +54,16 @@ public class PasienInap {
         return diagnosa[i];
     }
     
-    
-    
-    
-    
-    
-
-    
-    
+    public void deleteDiagnosa(int i){
+        if(diagnosa[i+1]==null){
+            diagnosa[i]=null;
+            nDiagnosa = nDiagnosa-1;
+        }else {
+            for(int j = i;j<nDiagnosa;j++){
+                diagnosa[j]=diagnosa[j+1];
+                nDiagnosa = nDiagnosa-1;
+            }
+        }
+        
+    }
 }

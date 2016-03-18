@@ -60,3 +60,4 @@ public class Pasien extends Orang{
       
     
 }
+

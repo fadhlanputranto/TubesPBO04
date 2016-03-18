@@ -15,12 +15,20 @@ public abstract class Orang {
     private String tlp;
 
     public Orang(String nama, int id) {
-        this.nama = nama;
-        this.id = id;
+        setNama(nama);
+        setId(id);
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     public int getId() {
         return id;
+    }
+
+    public void setNama(String nama) {
+        this.nama = nama;
     }
 
     public String getNama() {
