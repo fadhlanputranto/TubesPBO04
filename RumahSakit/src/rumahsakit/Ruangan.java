@@ -14,7 +14,7 @@ public class Ruangan {
     private int maxPasien;
     private int jumlahPasien;
     private PasienInap[] daftarPasien;
-
+    
     public Ruangan(int no, int maxPasien) {
         setNo(no);
         setMaxPasien(maxPasien);
