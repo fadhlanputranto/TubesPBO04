@@ -5,6 +5,8 @@
  */
 package rumahsakit;
 
+import model.AplikasiConsole;
+
 /**
  *
  * @author Asus A450CA

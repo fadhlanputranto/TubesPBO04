@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package rumahsakit;
+package model;
 
 /**
  *
@@ -14,6 +14,7 @@ public class Ruangan {
     private int maxPasien;
     private int jumlahPasien;
     private PasienInap[] daftarPasien;
+    private String ketersediaan;
     
     public Ruangan(int no, int maxPasien) {
         setNo(no);
@@ -47,6 +48,16 @@ public class Ruangan {
     public int getJumlahPasien() {
         return jumlahPasien;
     }
+
+    public void setKetersediaan(String ketersediaan) {
+        this.ketersediaan = ketersediaan;
+    }
+
+    public String getKetersediaan() {
+        return ketersediaan;
+    }
+    
+    
 
     public PasienInap getDaftarPasienByIndex(int i) {
         return daftarPasien[i];

@@ -13,12 +13,12 @@ import javax.swing.JTable;
  *
  * @author Asus A450CA
  */
-public class DaftarDokter extends javax.swing.JInternalFrame {
+public class DaftarRuangan extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form DaftarDokter
+     * Creates new form DaftarRuangan
      */
-    public DaftarDokter() {
+    public DaftarRuangan() {
         initComponents();
     }
 
@@ -32,51 +32,42 @@ public class DaftarDokter extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        tabelDokter = new javax.swing.JTable();
-        btnHapusDokter = new javax.swing.JButton();
-        btnTambahDokter = new javax.swing.JButton();
+        tabelRuangan = new javax.swing.JTable();
+        btnHapusRuangan = new javax.swing.JButton();
+        btnTambahRuangan = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Dokter");
+        setTitle("Ruangan");
 
-        tabelDokter.setModel(new javax.swing.table.DefaultTableModel(
+        tabelRuangan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null}
             },
             new String [] {
-                "Id Dokter", "Nama Dokter", "Keahlian", "Telepon"
+                "No", "Jumlah Pasien", "Kapasitas", "Status"
             }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
+        ));
+        jScrollPane1.setViewportView(tabelRuangan);
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(tabelDokter);
+        btnHapusRuangan.setText("Hapus Ruangan");
 
-        btnHapusDokter.setText("Hapus Dokter");
-
-        btnTambahDokter.setText("Tambah Dokter");
+        btnTambahRuangan.setText("Tambah Ruangan");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 616, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnHapusDokter)
+                .addComponent(btnHapusRuangan)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnTambahDokter)
+                .addComponent(btnTambahRuangan)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -85,8 +76,8 @@ public class DaftarDokter extends javax.swing.JInternalFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnHapusDokter, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
-                    .addComponent(btnTambahDokter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnHapusRuangan, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
+                    .addComponent(btnTambahRuangan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -95,26 +86,30 @@ public class DaftarDokter extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnHapusDokter;
-    private javax.swing.JButton btnTambahDokter;
+    private javax.swing.JButton btnHapusRuangan;
+    private javax.swing.JButton btnTambahRuangan;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tabelDokter;
+    private javax.swing.JTable tabelRuangan;
     // End of variables declaration//GEN-END:variables
-
-    public JButton getBtnHapusDokter() {
-        return btnHapusDokter;
-    }
-
-    public JButton getBtnTambahDokter() {
-        return btnTambahDokter;
-    }
-
-    public JTable getTabelDokter() {
-        return tabelDokter;
-    }
-
+    
+    
+    
     public void addListener(ActionListener e){
-        btnHapusDokter.addActionListener(e);
-        btnTambahDokter.addActionListener(e);
+        btnHapusRuangan.addActionListener(e);
+        btnTambahRuangan.addActionListener(e);
     }
+
+    public JButton getBtnHapusRuangan() {
+        return btnHapusRuangan;
+    }
+
+    public JButton getBtnTambahRuangan() {
+        return btnTambahRuangan;
+    }
+
+    public JTable getTabelRuangan() {
+        return tabelRuangan;
+    }
+    
+    
 }

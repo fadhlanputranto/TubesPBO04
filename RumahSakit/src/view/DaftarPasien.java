@@ -5,6 +5,10 @@
  */
 package view;
 
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JTable;
+
 /**
  *
  * @author Asus A450CA
@@ -28,9 +32,13 @@ public class DaftarPasien extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        TabelPasien = new javax.swing.JTable(){
+            public boolean isCellEditable(int rowIndex, int colIndex) {
+                return false;
+            }
+        };
+        btnPasienBaru = new javax.swing.JButton();
+        btnHapusPasien = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -38,7 +46,8 @@ public class DaftarPasien extends javax.swing.JInternalFrame {
         setResizable(true);
         setTitle("Pasien INAP");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        TabelPasien.setAutoCreateRowSorter(true);
+        TabelPasien.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -57,22 +66,25 @@ public class DaftarPasien extends javax.swing.JInternalFrame {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        TabelPasien.setColumnSelectionAllowed(true);
+        jScrollPane1.setViewportView(TabelPasien);
 
-        jButton1.setText("Pasien Baru");
+        btnPasienBaru.setText("Pasien Baru");
 
-        jButton2.setText("Hapus Pasien");
+        btnHapusPasien.setText("Hapus Pasien");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 443, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnHapusPasien)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 443, Short.MAX_VALUE)
+                        .addComponent(btnPasienBaru))
+                    .addComponent(jScrollPane1))
                 .addContainerGap())
-            .addComponent(jScrollPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -80,8 +92,8 @@ public class DaftarPasien extends javax.swing.JInternalFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnPasienBaru, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
+                    .addComponent(btnHapusPasien, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 23, Short.MAX_VALUE))
         );
 
@@ -90,9 +102,26 @@ public class DaftarPasien extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JTable TabelPasien;
+    private javax.swing.JButton btnHapusPasien;
+    private javax.swing.JButton btnPasienBaru;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
+
+    public JTable getTabelPasien() {
+        return TabelPasien;
+    }
+
+    public JButton getBtnHapusPasien() {
+        return btnHapusPasien;
+    }
+
+    public JButton getBtnPasienBaru() {
+        return btnPasienBaru;
+    }
+    
+    public void addListener(ActionListener e){
+        btnHapusPasien.addActionListener(e);
+        btnPasienBaru.addActionListener(e);
+    }
 }
