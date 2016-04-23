@@ -32,7 +32,11 @@ public class DaftarDokter extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        tabelDokter = new javax.swing.JTable();
+        tabelDokter = new javax.swing.JTable(){
+            public boolean isCellEditable(int rowIndex, int colIndex) {
+                return false;
+            }
+        };
         btnHapusDokter = new javax.swing.JButton();
         btnTambahDokter = new javax.swing.JButton();
 

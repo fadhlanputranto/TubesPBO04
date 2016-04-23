@@ -96,10 +96,10 @@ public class MainForm extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItem4);
 
-        jMenuItem5.setText("jMenuItem5");
+        jMenuItem5.setText("Tambah Dokter");
         jMenu2.add(jMenuItem5);
 
-        jMenuItem6.setText("jMenuItem6");
+        jMenuItem6.setText("Tambah Ruangan");
         jMenu2.add(jMenuItem6);
 
         jMenuBar1.add(jMenu2);
@@ -146,6 +146,7 @@ public class MainForm extends javax.swing.JFrame {
         InputPasien ip = new InputPasien();
         jDesktopPane1.add(ip);
         ip.setVisible(true);
+        
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     /**

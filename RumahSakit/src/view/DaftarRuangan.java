@@ -32,7 +32,11 @@ public class DaftarRuangan extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        tabelRuangan = new javax.swing.JTable();
+        tabelRuangan = new javax.swing.JTable(){
+            public boolean isCellEditable(int rowIndex, int colIndex) {
+                return false;
+            }
+        };
         btnHapusRuangan = new javax.swing.JButton();
         btnTambahRuangan = new javax.swing.JButton();
 
