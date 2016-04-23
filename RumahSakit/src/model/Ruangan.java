@@ -26,7 +26,8 @@ public class Ruangan {
         if(jumlahPasien < maxPasien){
             daftarPasien[jumlahPasien] = PI;
             jumlahPasien++;
-        }else System.out.println("Penuh");
+            setKetersediaan("Tersedia");
+        }else setKetersediaan("penuh");
     }
 
     public int getNo() {

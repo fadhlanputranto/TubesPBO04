@@ -6,6 +6,7 @@
 package view;
 
 import java.awt.event.ActionListener;
+import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 /**
@@ -32,9 +33,9 @@ public class InputRuangan extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        tfNomor = new javax.swing.JTextField();
         tfKapasitas = new javax.swing.JTextField();
         btnTambah = new javax.swing.JButton();
+        no = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Input Ruangan");
@@ -59,8 +60,8 @@ public class InputRuangan extends javax.swing.JFrame {
                             .addComponent(jLabel1))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(tfNomor, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
-                            .addComponent(tfKapasitas))))
+                            .addComponent(tfKapasitas, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
+                            .addComponent(no, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -69,8 +70,8 @@ public class InputRuangan extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(tfNomor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
+                    .addComponent(no))
+                .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
                     .addComponent(tfKapasitas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -121,8 +122,8 @@ public class InputRuangan extends javax.swing.JFrame {
     private javax.swing.JButton btnTambah;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel no;
     private javax.swing.JTextField tfKapasitas;
-    private javax.swing.JTextField tfNomor;
     // End of variables declaration//GEN-END:variables
 
     public JTextField getTfKapasitas() {
@@ -133,13 +134,15 @@ public class InputRuangan extends javax.swing.JFrame {
         this.tfKapasitas = tfKapasitas;
     }
 
-    public JTextField getTfNomor() {
-        return tfNomor;
+    public JLabel getNo() {
+        return no;
     }
 
-    public void setTfNomor(JTextField tfNomor) {
-        this.tfNomor = tfNomor;
+    public void setNo(JLabel no) {
+        this.no = no;
     }
+
+    
 
     public void addListener(ActionListener e){
         btnTambah.addActionListener(e);

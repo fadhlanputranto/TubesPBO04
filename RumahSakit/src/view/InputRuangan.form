@@ -35,8 +35,8 @@
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="tfNomor" pref="179" max="32767" attributes="0"/>
-                          <Component id="tfKapasitas" max="32767" attributes="0"/>
+                          <Component id="tfKapasitas" pref="179" max="32767" attributes="0"/>
+                          <Component id="no" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -50,9 +50,9 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="tfNomor" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="no" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                   <Component id="tfKapasitas" min="-2" max="-2" attributes="0"/>
@@ -75,14 +75,14 @@
         <Property name="text" type="java.lang.String" value="Kapasitas"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="tfNomor">
-    </Component>
     <Component class="javax.swing.JTextField" name="tfKapasitas">
     </Component>
     <Component class="javax.swing.JButton" name="btnTambah">
       <Properties>
         <Property name="text" type="java.lang.String" value="Tambah"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="no">
     </Component>
   </SubComponents>
 </Form>
