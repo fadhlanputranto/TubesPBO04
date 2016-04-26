@@ -5,10 +5,21 @@
  */
 package controller;
 
+import model.AplikasiConsole;
+import view.MainForm;
+
 /**
  *
  * @author Asus A450CA
  */
 public class ControllerMainForm {
+    AplikasiConsole model;
+    MainForm view;
+
+    public ControllerMainForm(AplikasiConsole model) {
+        this.model = model;
+        view = new MainForm();
+    }
+    
     
 }

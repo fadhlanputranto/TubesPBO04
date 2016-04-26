@@ -34,7 +34,7 @@ public class Database {
         connection = DriverManager.getConnection(dbname, dbuser, dbpass);
         statement = connection.createStatement();
     }
-    
+    //====== SAVE
     public void  saveDokter(Dokter d) throws SQLException{
         String query = " insert into dokter(nama_dokter,keahlian,tlp_dokter) values ('"+d.getNama()+"',"
                 + "'"+d.getSpecialis()+"','"+d.getTlp()+"')";
@@ -76,7 +76,7 @@ public class Database {
                 + "'"+d.getId()+"','"+r.getNo()+"')";
        statement.executeUpdate(query);
     }
-    
+    //======= LOAD
     public ArrayList<Ruangan> loadPasienInap() throws SQLException{
         int i=0;int no;int j = 0;
         ArrayList<Ruangan> tmp = new ArrayList();
@@ -144,27 +144,27 @@ public class Database {
         }
         return tmp;
     }
-    
-    public JComboBox<String> comboDokter() throws SQLException{
-        JComboBox<String> tmp = new JComboBox();
+    //===== combo
+    public ArrayList<String> comboDokter() throws SQLException{
+        ArrayList<String> tmp = new ArrayList();
         String query = "select * from dokter";
         ResultSet rs = statement.executeQuery(query);
         while(rs.next()){
-            tmp.addItem(rs.getString("nama_dokter"));
+            tmp.add(rs.getString("nama_dokter"));
         }
         return tmp;
     }
     
-     public JComboBox<String> comboRuangan() throws SQLException{
-        JComboBox<String> tmp = new JComboBox();
+     public  ArrayList<String> comboRuangan() throws SQLException{
+         ArrayList<String> tmp = new  ArrayList();
         String query = "select * from ruangan";
         ResultSet rs = statement.executeQuery(query);
         while(rs.next()){
-            tmp.addItem(String.valueOf(rs.getInt("no")));
+            tmp.add(String.valueOf(rs.getInt("no")));
         }
         return tmp;
     }
-     
+     //====== UPDATE
      public void updateRuangan(Ruangan r) throws SQLException{
          String query = "update ruangan set jml_pasien = '"+r.getJumlahPasien()+"'"
                  + "where no = '"+r.getNo()+"'";
@@ -176,5 +176,25 @@ public class Database {
                  + "where id_pasien = '"+p.getId()+"'";
          statement.executeUpdate(query);
      }
-    
+    //====== CARI
+      public Dokter cariDokter(String nama) throws SQLException{
+          String query= "select * from dokter where nama_dokter = '"+nama+"'";
+          ResultSet rs = statement.executeQuery(query);
+          
+          while(rs.next()){
+              Dokter d = new Dokter(rs.getString(2),rs.getInt(1),rs.getString(3),rs.getString(4));
+              return d;
+          }
+          return null;
+      }
+      
+       public Ruangan cariRuangan(int no) throws SQLException{
+          String query= "select * from ruangan where no = '"+no+"'";
+          ResultSet rs = statement.executeQuery(query);          
+          while(rs.next()){
+              Ruangan r = new Ruangan(rs.getInt(1),rs.getInt(3),rs.getInt(2),rs.getString(4));
+              return r;
+          }
+          return null;
+      }
 }

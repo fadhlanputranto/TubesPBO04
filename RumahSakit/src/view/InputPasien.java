@@ -6,6 +6,7 @@
 package view;
 
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -81,7 +82,6 @@ public class InputPasien extends javax.swing.JFrame {
 
         btnTambah.setText("Tambah");
 
-        cbNamaDokter.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cbNamaDokter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbNamaDokterActionPerformed(evt);
@@ -95,8 +95,6 @@ public class InputPasien extends javax.swing.JFrame {
                 tfTeleponActionPerformed(evt);
             }
         });
-
-        cbNoRuangan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel10.setText("No Ruangan");
 
@@ -118,16 +116,16 @@ public class InputPasien extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26))
             .addGroup(layout.createSequentialGroup()
                 .addGap(113, 113, 113)
                 .addComponent(L)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(P)
                 .addContainerGap(284, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
@@ -265,17 +263,22 @@ public class InputPasien extends javax.swing.JFrame {
         return (String) cbNamaDokter.getSelectedItem();
     }
            
-    public void setCbNamaDokter(JComboBox<String> cbNamaDokter) {
-        this.cbNamaDokter = cbNamaDokter;
+    public void setCbNamaDokter(ArrayList<String> cbNamaDokter) {
+        for(int i = 0; i < cbNamaDokter.size();i++){
+            this.cbNamaDokter.addItem(cbNamaDokter.get(i));
+        }
+            
     }
 
     public int getCbNoRuangan() {
-       return (int) cbNoRuangan.getSelectedItem();
+       return Integer.parseInt(cbNoRuangan.getSelectedItem().toString());
     }
     
     
-    public void setCbNoRuangan(JComboBox<String> cbNoRuangan) {
-        this.cbNoRuangan = cbNoRuangan;
+    public void setCbNoRuangan( ArrayList<String> cbNoRuangan) {
+         for(int i = 0; i < cbNoRuangan.size();i++){
+            this.cbNoRuangan.addItem(cbNoRuangan.get(i));
+        }
     }
 
     public void setTfId(int id) {

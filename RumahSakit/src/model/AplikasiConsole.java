@@ -33,8 +33,9 @@ public class AplikasiConsole {
     
     //===== create
     public void createPasienInap(Pasien p,String namaDokter,int noRuangan) throws SQLException{
-        Dokter d = cariDokter(namaDokter);
-        Ruangan r = cariRuangan(noRuangan);
+        Dokter d = con.cariDokter(namaDokter);
+        Ruangan r = con.cariRuangan(noRuangan);
+        r.setDaftarPasien(r.getMaxPasien());
         r.tambahPasienInap(p, d);;
         con.savePasien(p);
         con.updateRuangan(r);
@@ -67,11 +68,11 @@ public class AplikasiConsole {
         return con.loadDokter();
     }
      
-    public JComboBox<String> getComboDokter() throws SQLException{
+    public ArrayList<String> getComboDokter() throws SQLException{
         return con.comboDokter();
     }
     
-     public JComboBox<String> getComboRuangan() throws SQLException{
+     public  ArrayList<String> getComboRuangan() throws SQLException{
         return con.comboRuangan();
     }
     //===== ADD 
