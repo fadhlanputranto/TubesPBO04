@@ -12,10 +12,16 @@ package model;
 public class PasienInap {
     private Pasien pasien;
     private Dokter dokter;
-    private String[] diagnosa = new String[20];
+    private String diagnosa;
     private int nDiagnosa;
 
     public PasienInap() {
+    }
+
+    public PasienInap(int idPasien,int idDokter,String diagnosa) {
+        pasien.setId(idPasien);
+        dokter.setId(idDokter);
+        diagnosa = diagnosa;
     }
     
     public PasienInap(Pasien p, Dokter d) {
@@ -23,12 +29,12 @@ public class PasienInap {
         setDokter(d);
     }
 
-    public void addDiagnosa(String diagnosa) {
-        if(nDiagnosa < 20){
-            this.diagnosa[nDiagnosa] = diagnosa;
-            nDiagnosa++;
-        }else System.out.println("Penuh");    
-    }
+//    public void addDiagnosa(String diagnosa) {
+//        if(nDiagnosa < 20){
+//            this.diagnosa[nDiagnosa] = diagnosa;
+//            nDiagnosa++;
+//        }else System.out.println("Penuh");    
+//    }
     
     public void setDokter(Dokter d) {
         dokter = d;
@@ -50,20 +56,20 @@ public class PasienInap {
         return nDiagnosa;
     }
 
-    public String getDiagnosa(int i) {
-        return diagnosa[i];
-    }
-    
-    public void deleteDiagnosa(int i){
-        if(diagnosa[i+1]==null){
-            diagnosa[i]=null;
-            nDiagnosa = nDiagnosa-1;
-        }else {
-            for(int j = i;j<nDiagnosa;j++){
-                diagnosa[j]=diagnosa[j+1];
-                nDiagnosa = nDiagnosa-1;
-            }
-        }
-        
-    }
+//    public String getDiagnosa(int i) {
+//        return diagnosa[i];
+//    }
+//    
+//    public void deleteDiagnosa(int i){
+//        if(diagnosa[i+1]==null){
+//            diagnosa[i]=null;
+//            nDiagnosa = nDiagnosa-1;
+//        }else {
+//            for(int j = i;j<nDiagnosa;j++){
+//                diagnosa[j]=diagnosa[j+1];
+//                nDiagnosa = nDiagnosa-1;
+//            }
+//        }
+//        
+//    }
 }

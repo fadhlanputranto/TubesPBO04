@@ -60,6 +60,7 @@ public class ControllerInputPasien implements ActionListener{
                     , view.getJenisKelamin(), view.getTfNama(), view.getTfTelepon());
                 try {
                     model.createPasienInap(p, view.getCbNamaDokter(), view.getCbNoRuangan());
+                    new ControllerDaftarPasien(model);
                     view.dispose();
                 } catch (SQLException ex) {
                     JOptionPane.showMessageDialog(view,"create gagal");

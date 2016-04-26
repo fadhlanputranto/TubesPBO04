@@ -43,7 +43,9 @@ public class Ruangan {
             daftarPasien[jumlahPasien] = PI;
             jumlahPasien++;
             setKetersediaan("Tersedia");
-        }else setKetersediaan("penuh");
+        }
+        if(jumlahPasien == maxPasien)
+            setKetersediaan("penuh");
     }
 
     public int getNo() {

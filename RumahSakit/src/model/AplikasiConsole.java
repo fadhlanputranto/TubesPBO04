@@ -56,8 +56,13 @@ public class AplikasiConsole {
         
     }
     //==== GET
+    public Pasien getPasien(int selected) throws SQLException{
+        ArrayList<PasienInap> pi = con.loadPasienInap();
+        PasienInap pai = pi.get(selected);
+        return cariPasien(pai.getPasien().getId());
+    }
     public ArrayList<Ruangan> getPasienInap() throws SQLException{
-        return con.loadPasienInap();
+        return con.loadRuanganPasienInap();
     }
     
      public ArrayList<Ruangan> getRuangan() throws SQLException{

@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.AplikasiConsole;
+import model.Pasien;
 import view.DaftarPasien;
 
 /**
@@ -47,11 +48,16 @@ public class ControllerDaftarPasien extends MouseAdapter implements ActionListen
         if(ae.getSource().equals(view.getBtnPasienBaru())){
             try {
                 new ControllerInputPasien(model);
+                view.dispose();
             } catch (SQLException ex) {
                 Logger.getLogger(ControllerDaftarPasien.class.getName()).log(Level.SEVERE, null, ex);
             }
         }else if(ae.getSource().equals(view.getBtnEdit())){
-            new ControllerEditPasien();
+            try {
+                Pasien p = model.getPasien(selected);
+                new ControllerInputPasien(model, p);
+            } catch (SQLException sQLException) {
+            }
         }else if(ae.getSource().equals(view.getBtnHapusPasien())){
             
         }

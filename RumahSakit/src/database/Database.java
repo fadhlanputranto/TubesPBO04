@@ -77,7 +77,18 @@ public class Database {
        statement.executeUpdate(query);
     }
     //======= LOAD
-    public ArrayList<Ruangan> loadPasienInap() throws SQLException{
+    public ArrayList<PasienInap> loadPasienInap() throws SQLException{
+       String query = "select * from pasien_inap";
+       ArrayList<PasienInap> tmp= new ArrayList();
+       ResultSet rs = statement.executeQuery(query);
+        while (rs.next()){            
+            PasienInap pi = new PasienInap(rs.getInt(1), rs.getInt(2), rs.getString(3));
+            tmp.add(pi);
+        }
+        return tmp;
+    }
+    
+    public ArrayList<Ruangan> loadRuanganPasienInap() throws SQLException{
         int i=0;int no;int j = 0;
         ArrayList<Ruangan> tmp = new ArrayList();
         String query = "select * from ruangan,pasien_inap,pasien,dokter "
@@ -157,7 +168,7 @@ public class Database {
     
      public  ArrayList<String> comboRuangan() throws SQLException{
          ArrayList<String> tmp = new  ArrayList();
-        String query = "select * from ruangan";
+        String query = "select * from ruangan where status = 'Tersedia'";
         ResultSet rs = statement.executeQuery(query);
         while(rs.next()){
             tmp.add(String.valueOf(rs.getInt("no")));
@@ -166,7 +177,7 @@ public class Database {
     }
      //====== UPDATE
      public void updateRuangan(Ruangan r) throws SQLException{
-         String query = "update ruangan set jml_pasien = '"+r.getJumlahPasien()+"'"
+         String query = "update ruangan set jml_pasien = '"+r.getJumlahPasien()+"',status = '"+r.getKetersediaan()+"' "
                  + "where no = '"+r.getNo()+"'";
          statement.executeUpdate(query);
      }
@@ -194,6 +205,16 @@ public class Database {
           while(rs.next()){
               Ruangan r = new Ruangan(rs.getInt(1),rs.getInt(3),rs.getInt(2),rs.getString(4));
               return r;
+          }
+          return null;
+      }
+       
+       public Pasien cariPasien(int id) throws SQLException{
+          String query= "select * from pasien where id_pasien = '"+id+"'";
+          ResultSet rs = statement.executeQuery(query);          
+          while(rs.next()){
+              Pasien p = new Pasien(rs.getString(2),rs.getInt(1),rs.getString(5),rs.getString(6),rs.getInt(3),rs.getString(4));
+              return p;
           }
           return null;
       }
