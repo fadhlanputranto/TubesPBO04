@@ -27,6 +27,7 @@ public class Database {
     private String dbpass = "";
     private Statement statement;
     private Connection connection;
+    Ruangan ru;
     
     
     public void connect() throws SQLException{
@@ -77,7 +78,7 @@ public class Database {
     }
     
     public ArrayList<Ruangan> loadPasienInap() throws SQLException{
-        int i=1;int no;int j = 0;
+        int i=0;int no;int j = 0;
         ArrayList<Ruangan> tmp = new ArrayList();
         String query = "select * from ruangan,pasien_inap,pasien,dokter "
                 + "where ruangan.no = pasien_inap.no "
@@ -88,13 +89,22 @@ public class Database {
             Pasien p = new Pasien(rs.getString("nama_pasien"), rs.getInt("id_pasien"), rs.getString("tlp_pasien"),
                     rs.getString("alamat"),rs.getInt("usia"), rs.getString("jenis_kelamin"));
             Dokter d = new Dokter(rs.getString("nama_dokter"), rs.getInt("id_dokter"), rs.getString("tlp_dokter"),rs.getString("keahlian"));
-            Ruangan r = new Ruangan();
-            while(rs.getInt("no")!=i){
-                i++;
-            }
-            r.setNo(i);
-            r.tambahPasienInap(p, d);
-            tmp.add(r);
+            
+            if(rs.getInt("no")!=i){
+                ru = new Ruangan();
+                while(rs.getInt("no")!=i){
+                    i++;
+                }
+                ru.setNo(i);
+                ru.setMaxPasien(rs.getInt("kapasitas"));
+                ru.setDaftarPasien(ru.getMaxPasien());
+                ru.tambahPasienInap(p, d);  
+                
+            }else
+                ru.tambahPasienInap(p, d);
+            if(rs.getInt("jml_pasien")==ru.getJumlahPasien())
+                tmp.add(ru);
+           
         }
         return tmp;        
     }

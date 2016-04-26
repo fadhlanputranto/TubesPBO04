@@ -5,6 +5,8 @@
  */
 package rumahsakit;
 
+import controller.ControllerDaftarPasien;
+import java.sql.SQLException;
 import model.AplikasiConsole;
 
 /**
@@ -16,10 +18,11 @@ public class RumahSakit {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         // TODO code application logic here 
         
-       
+      AplikasiConsole model = new AplikasiConsole();
+      new ControllerDaftarPasien(model);
     }
       
 }

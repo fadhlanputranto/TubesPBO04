@@ -27,6 +27,7 @@ public class AplikasiConsole {
         pasien= new ArrayList(); 
         dokter= new ArrayList(); 
         ruangan= new ArrayList(); 
+        con = new Database();
         con.connect();
     }
     

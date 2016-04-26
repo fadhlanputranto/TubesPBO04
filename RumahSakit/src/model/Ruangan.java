@@ -20,6 +20,7 @@ public class Ruangan {
      public Ruangan(int maxPasien) {
         setNo(no);
         setMaxPasien(maxPasien);
+        daftarPasien = new PasienInap[maxPasien];
         setJumlahPasien(0);
         setKetersediaan("Tersedia");
     }
@@ -78,9 +79,13 @@ public class Ruangan {
     public String getKetersediaan() {
         return ketersediaan;
     }
-    
-    
 
+    public void setDaftarPasien(int maxpasien) {
+        this.daftarPasien = new PasienInap[maxpasien];
+    }
+    
+    
+    
     public PasienInap getDaftarPasienByIndex(int i) {
         return daftarPasien[i];
     }

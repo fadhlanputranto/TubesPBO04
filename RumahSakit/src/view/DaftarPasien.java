@@ -18,7 +18,7 @@ import model.Ruangan;
  *
  * @author Asus A450CA
  */
-public class DaftarPasien extends javax.swing.JInternalFrame {
+public class DaftarPasien extends javax.swing.JFrame {
 
     /**
      * Creates new form DaftarPasien
@@ -49,10 +49,6 @@ public class DaftarPasien extends javax.swing.JInternalFrame {
         jTextArea1 = new javax.swing.JTextArea();
         btnEdit = new javax.swing.JButton();
 
-        setClosable(true);
-        setIconifiable(true);
-        setMaximizable(true);
-        setResizable(true);
         setTitle("Pasien INAP");
 
         TabelPasien.setAutoCreateRowSorter(true);
@@ -176,17 +172,22 @@ public class DaftarPasien extends javax.swing.JInternalFrame {
     }
     
     public void viewPasienIinap(ArrayList<Ruangan> listPasienInap){
+        int j = 0;
          String[] title = {
             "id Pasien", "Nama Pasien", "Diagnosa", "Nama Dokter","Ruangan"
         };
-        String[][] data = new String[listPasienInap.size()][5];
+        String[][] data = new String[50][5];
         for (int i = 0; i < listPasienInap.size(); i++){
             Ruangan r = listPasienInap.get(i);
-            data[i][0] = String.valueOf(r.getDaftarPasienByIndex(i).getPasien().getId());
-            data[i][1] = r.getDaftarPasienByIndex(i).getPasien().getNama();
-            data[i][2] = r.getDaftarPasienByIndex(i).getDiagnosa(i);
-            data[i][3] = r.getDaftarPasienByIndex(i).getDokter().getNama();
-            data[i][4] = String.valueOf(r.getNo());
+            for(int k = 0; k< r.getJumlahPasien();k++){
+                data[j][0] = String.valueOf( r.getDaftarPasienByIndex(k).getPasien().getId());
+                data[j][1] = r.getDaftarPasienByIndex(k).getPasien().getNama();
+                //data[j][2] = r.getDaftarPasienByIndex(j).getDiagnosa(i);
+                data[j][3] = r.getDaftarPasienByIndex(k).getDokter().getNama();
+                data[j][4] = String.valueOf(r.getNo());
+                j++;
+            }
+            
         }
         TabelPasien.setModel(new DefaultTableModel(data, title));
     }
