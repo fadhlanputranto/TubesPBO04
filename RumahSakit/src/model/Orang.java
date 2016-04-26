@@ -18,6 +18,20 @@ public abstract class Orang {
         setNama(nama);
         setId(id);
     }
+    
+    public Orang(String nama, String tlp) {
+        setNama(nama);
+        setTlp(tlp);
+    }
+
+    public Orang(String nama, int id, String tlp) {
+        this.nama = nama;
+        this.id = id;
+        this.tlp = tlp;
+    }
+    
+   
+    
 
     public void setId(int id) {
         this.id = id;

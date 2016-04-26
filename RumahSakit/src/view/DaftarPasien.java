@@ -6,8 +6,13 @@
 package view;
 
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import model.Pasien;
+import model.Ruangan;
 
 /**
  *
@@ -39,6 +44,10 @@ public class DaftarPasien extends javax.swing.JInternalFrame {
         };
         btnPasienBaru = new javax.swing.JButton();
         btnHapusPasien = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        btnEdit = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -73,28 +82,51 @@ public class DaftarPasien extends javax.swing.JInternalFrame {
 
         btnHapusPasien.setText("Hapus Pasien");
 
+        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane2.setViewportView(jTextArea1);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
+        );
+
+        btnEdit.setText("Edit");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnHapusPasien)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 443, Short.MAX_VALUE)
-                        .addComponent(btnPasienBaru))
-                    .addComponent(jScrollPane1))
+                .addComponent(btnHapusPasien)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnPasienBaru)
                 .addContainerGap())
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 638, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnPasienBaru, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
-                    .addComponent(btnHapusPasien, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 23, Short.MAX_VALUE))
+                    .addComponent(btnHapusPasien, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnEdit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 16, Short.MAX_VALUE))
         );
 
         pack();
@@ -103,9 +135,13 @@ public class DaftarPasien extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TabelPasien;
+    private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnHapusPasien;
     private javax.swing.JButton btnPasienBaru;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 
     public JTable getTabelPasien() {
@@ -119,9 +155,40 @@ public class DaftarPasien extends javax.swing.JInternalFrame {
     public JButton getBtnPasienBaru() {
         return btnPasienBaru;
     }
+
+    public JButton getBtnEdit() {
+        return btnEdit;
+    }
     
+        
     public void addListener(ActionListener e){
         btnHapusPasien.addActionListener(e);
         btnPasienBaru.addActionListener(e);
+        btnEdit.addActionListener(e);
     }
+    
+    public  void addAdapter(MouseAdapter me){
+        TabelPasien.addMouseListener(me);        
+    }
+    
+    public int getSelectedPasien(){
+        return TabelPasien.getSelectedRow();
+    }
+    
+    public void viewPasienIinap(ArrayList<Ruangan> listPasienInap){
+         String[] title = {
+            "id Pasien", "Nama Pasien", "Diagnosa", "Nama Dokter","Ruangan"
+        };
+        String[][] data = new String[listPasienInap.size()][5];
+        for (int i = 0; i < listPasienInap.size(); i++){
+            Ruangan r = listPasienInap.get(i);
+            data[i][0] = String.valueOf(r.getDaftarPasienByIndex(i).getPasien().getId());
+            data[i][1] = r.getDaftarPasienByIndex(i).getPasien().getNama();
+            data[i][2] = r.getDaftarPasienByIndex(i).getDiagnosa(i);
+            data[i][3] = r.getDaftarPasienByIndex(i).getDokter().getNama();
+            data[i][4] = String.valueOf(r.getNo());
+        }
+        TabelPasien.setModel(new DefaultTableModel(data, title));
+    }
+    
 }

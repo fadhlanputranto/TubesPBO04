@@ -17,6 +17,13 @@ public class Dokter extends Orang{
         super.setTlp(tlp);
     }
 
+    public Dokter(String nama, int id,String specialis, String tlp) {
+        super(nama, id, tlp);
+        this.specialis = specialis;
+    }
+    
+    
+
     @Override
     public int getId() {
         return super.getId(); //To change body of generated methods, choose Tools | Templates.

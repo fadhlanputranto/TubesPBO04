@@ -9,6 +9,6 @@ package controller;
  *
  * @author Asus A450CA
  */
-public class ControllerDaftarPelanggan {
+public class ControllerEditPasien {
     
 }

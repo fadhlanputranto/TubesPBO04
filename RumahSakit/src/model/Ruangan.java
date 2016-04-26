@@ -16,10 +16,25 @@ public class Ruangan {
     private PasienInap[] daftarPasien;
     private String ketersediaan;
     
-    public Ruangan(int no, int maxPasien) {
+    
+     public Ruangan(int maxPasien) {
         setNo(no);
         setMaxPasien(maxPasien);
+        setJumlahPasien(0);
+        setKetersediaan("Tersedia");
     }
+
+    public Ruangan(int no, int maxPasien, int jumlahPasien, String ketersediaan) {
+        this.no = no;
+        this.maxPasien = maxPasien;
+        this.jumlahPasien = jumlahPasien;
+        this.ketersediaan = ketersediaan;
+    }
+    
+    public Ruangan(){
+        
+    }
+     
     
     public void tambahPasienInap(Pasien p, Dokter d){
         PasienInap PI = new PasienInap(p,d);
@@ -49,6 +64,12 @@ public class Ruangan {
     public int getJumlahPasien() {
         return jumlahPasien;
     }
+
+    public void setJumlahPasien(int jumlahPasien) {
+        this.jumlahPasien = jumlahPasien;
+    }
+    
+    
 
     public void setKetersediaan(String ketersediaan) {
         this.ketersediaan = ketersediaan;

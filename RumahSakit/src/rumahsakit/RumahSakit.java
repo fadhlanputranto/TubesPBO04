@@ -19,8 +19,7 @@ public class RumahSakit {
     public static void main(String[] args) {
         // TODO code application logic here 
         
-        AplikasiConsole A = new AplikasiConsole();
-        A.mainMenu();
+       
     }
       
 }

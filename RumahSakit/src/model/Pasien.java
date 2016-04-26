@@ -19,6 +19,26 @@ public class Pasien extends Orang{
         super.setTlp(tlp);
     }
 
+    public Pasien(String nama, int id, String tlp,String alamat, int usia, String jenisKelamin ) {
+        super(nama, id, tlp);
+        this.alamat = alamat;
+        this.usia = usia;
+        this.jenisKelamin = jenisKelamin;
+    }
+
+    public Pasien(String alamat, int usia, String jenisKelamin, String nama, String tlp) {
+        super(nama, tlp);
+        this.alamat = alamat;
+        this.usia = usia;
+        this.jenisKelamin = jenisKelamin;
+    }
+
+    
+    
+    
+    
+    
+
     public void setAlamat(String alamat) {
         this.alamat = alamat;
     }
@@ -57,7 +77,12 @@ public class Pasien extends Orang{
     public String getTlp() {
         return super.getTlp(); //To change body of generated methods, choose Tools | Templates.
     }
-      
+
+    @Override
+    public void setId(int id) {
+        super.setId(id); //To change body of generated methods, choose Tools | Templates.
+    }
+    
     
 }
 

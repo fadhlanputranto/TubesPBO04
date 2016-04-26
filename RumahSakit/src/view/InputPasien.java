@@ -6,8 +6,12 @@
 package view;
 
 import java.awt.event.ActionListener;
+import java.util.Date;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import model.Ruangan;
 
 /**
  *
@@ -31,12 +35,12 @@ public class InputPasien extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        tbnGrpJk = new javax.swing.ButtonGroup();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         taAlamat = new javax.swing.JTextArea();
         jLabel4 = new javax.swing.JLabel();
         tfNama = new javax.swing.JTextField();
-        cbJenisKelamin = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -49,6 +53,8 @@ public class InputPasien extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         tfUsia = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
+        L = new javax.swing.JRadioButton();
+        P = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Input Pasien");
@@ -67,8 +73,6 @@ public class InputPasien extends javax.swing.JFrame {
             }
         });
 
-        cbJenisKelamin.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jLabel7.setText("Telepon");
 
         jLabel5.setText("Usia");
@@ -78,6 +82,11 @@ public class InputPasien extends javax.swing.JFrame {
         btnTambah.setText("Tambah");
 
         cbNamaDokter.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbNamaDokter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbNamaDokterActionPerformed(evt);
+            }
+        });
 
         jLabel6.setText("Jenis Kelamin");
 
@@ -99,14 +108,26 @@ public class InputPasien extends javax.swing.JFrame {
 
         jLabel9.setText("Nama Dokter");
 
+        tbnGrpJk.add(L);
+        L.setText("Laki-Laki");
+
+        tbnGrpJk.add(P);
+        P.setText("Perempuan");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(444, Short.MAX_VALUE)
-                .addComponent(btnTambah)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(113, 113, 113)
+                .addComponent(L)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(P)
+                .addContainerGap(284, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
@@ -136,21 +157,22 @@ public class InputPasien extends javax.swing.JFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(cbNamaDokter, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(cbNoRuangan, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(19, 19, 19))
+                        .addComponent(cbNoRuangan, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(tfTelepon, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(tfTelepon, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbJenisKelamin, javax.swing.GroupLayout.Alignment.LEADING, 0, 166, Short.MAX_VALUE)
+                            .addComponent(tfUsia, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
                             .addComponent(tfId, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfNama, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfUsia, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(tfNama, javax.swing.GroupLayout.Alignment.LEADING)))
                     .addContainerGap()))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(222, Short.MAX_VALUE)
+                .addGap(97, 97, 97)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(L)
+                    .addComponent(P))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
                 .addComponent(btnTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,10 +190,8 @@ public class InputPasien extends javax.swing.JFrame {
                         .addComponent(jLabel5)
                         .addComponent(tfUsia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(9, 9, 9)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel6)
-                        .addComponent(cbJenisKelamin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jLabel6)
+                    .addGap(12, 12, 12)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel7)
                         .addComponent(tfTelepon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -192,7 +212,6 @@ public class InputPasien extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
     private void tfNamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNamaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfNamaActionPerformed
@@ -204,14 +223,18 @@ public class InputPasien extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tfTeleponActionPerformed
 
+    private void cbNamaDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbNamaDokterActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbNamaDokterActionPerformed
+
     /**
      * @param args the command line arguments
      */
-  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton L;
+    private javax.swing.JRadioButton P;
     private javax.swing.JButton btnTambah;
-    private javax.swing.JComboBox<String> cbJenisKelamin;
     private javax.swing.JComboBox<String> cbNamaDokter;
     private javax.swing.JComboBox<String> cbNoRuangan;
     private javax.swing.JLabel jLabel10;
@@ -224,42 +247,97 @@ public class InputPasien extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea taAlamat;
+    private javax.swing.ButtonGroup tbnGrpJk;
     private javax.swing.JTextField tfId;
     private javax.swing.JTextField tfNama;
     private javax.swing.JTextField tfTelepon;
     private javax.swing.JTextField tfUsia;
     // End of variables declaration//GEN-END:variables
 
-    public void setCbJenisKelamin(JComboBox<String> cbJenisKelamin) {
-        this.cbJenisKelamin = cbJenisKelamin;
+    public String getJenisKelamin(){
+        if(L.isSelected())
+            return L.getText();
+        else
+            return P.getText();
     }
 
+    public String getCbNamaDokter() {
+        return (String) cbNamaDokter.getSelectedItem();
+    }
+           
     public void setCbNamaDokter(JComboBox<String> cbNamaDokter) {
         this.cbNamaDokter = cbNamaDokter;
     }
 
+    public int getCbNoRuangan() {
+       return (int) cbNoRuangan.getSelectedItem();
+    }
+    
+    
     public void setCbNoRuangan(JComboBox<String> cbNoRuangan) {
         this.cbNoRuangan = cbNoRuangan;
     }
 
-    public void setTfId(JTextField tfId) {
-        this.tfId = tfId;
+    public void setTfId(int id) {
+        tfId.setText(String.valueOf(id));
     }
 
-    public void setTfNama(JTextField tfNama) {
-        this.tfNama = tfNama;
+    public void setTfNama(String s) {
+        tfNama.setText(s);
     }
 
-    public void setTfTelepon(JTextField tfTelepon) {
-        this.tfTelepon = tfTelepon;
+    public void setTfTelepon(String s) {
+        tfTelepon.setText(s);
     }
 
-    public void setTfUsia(JTextField tfUsia) {
-        this.tfUsia = tfUsia;
+    public void setTaAlamat(String s) {
+       taAlamat.setText(s);
+    }
+
+        
+    public void setTfUsia(int usia) {
+        tfUsia.setText(String.valueOf(usia));
     }
 
     public void addListener(ActionListener e){
         btnTambah.addActionListener(e);
+    }
+
+    public JButton getBtnTambah() {
+        return btnTambah;
+    }
+
+    public String getTaAlamat() {
+        return taAlamat.getText();
+    }
+
+    public String getTfId() {
+        return tfId.getText();
+    }
+
+    public String getTfNama() {
+        return tfNama.getText();
+    }
+
+    public String getTfTelepon() {
+        return tfTelepon.getText();
+    }
+
+    public int getTfUsia() {
+        return Integer.parseInt(tfUsia.getText());
+    }
+    
+    
+//=======================untuk edit========= 
+//=======================RESET==============
+    public void reset(){
+       tfId.setVisible(false);
+       tfNama.setText("");
+       tfTelepon.setText("");
+       tfUsia.setText("");
+       taAlamat.setText("");
+       btnTambah.setVisible(true);
+       
     }
     
 }
