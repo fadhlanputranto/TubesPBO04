@@ -54,12 +54,15 @@ public class ControllerInputPasien implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent ae) {
+        view.setTfId();
         if(ae.getSource().equals(view.getBtnTambah())){            
             if(p==null){
+                
                  p = new Pasien(view.getTaAlamat(),view.getTfUsia()
                     , view.getJenisKelamin(), view.getTfNama(), view.getTfTelepon());
+                 String diagnosa = view.getDiagnosa();
                 try {
-                    model.createPasienInap(p, view.getCbNamaDokter(), view.getCbNoRuangan());
+                    model.createPasienInap(p, view.getCbNamaDokter(), view.getCbNoRuangan(),diagnosa);
                     new ControllerDaftarPasien(model);
                     view.dispose();
                 } catch (SQLException ex) {
@@ -68,9 +71,10 @@ public class ControllerInputPasien implements ActionListener{
             }
             
             else{
-                  p = new Pasien(view.getTaAlamat(),view.getTfUsia()
-                    , view.getJenisKelamin(), view.getTfNama(), view.getTfTelepon());
+                  p = new Pasien(view.getTfNama(),view.getTfId(), view.getTfTelepon(),view.getTaAlamat(),view.getTfUsia()
+                    , view.getJenisKelamin() );
                 try {
+                    model.setRuangan(model.getPasienInap());
                     model.updatePasienInap(p, view.getCbNamaDokter(), view.getCbNoRuangan());
                     new ControllerDaftarPasien(model);
                 } catch (SQLException ex) {
@@ -78,6 +82,14 @@ public class ControllerInputPasien implements ActionListener{
                 }                
                 view.dispose();
             }
+        }else if(ae.getSource().equals(view.getBtnBack())){
+            try {
+                new ControllerDaftarPasien(model);
+            } catch (SQLException ex) {
+                Logger.getLogger(ControllerInputPasien.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            view.dispose();
+            
         }
     }
     

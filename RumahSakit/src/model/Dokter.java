@@ -12,6 +12,11 @@ package model;
 public class Dokter extends Orang{
     private String specialis;
 
+    public Dokter() {
+        super(null, 0);
+    }
+
+    
     public Dokter(String nama, int id, String tlp) {
         super(nama, id);
         super.setTlp(tlp);

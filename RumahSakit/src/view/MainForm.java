@@ -9,6 +9,7 @@ import com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JMenu;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -34,16 +35,47 @@ public class MainForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuBar2 = new javax.swing.JMenuBar();
+        jMenu3 = new javax.swing.JMenu();
+        jMenu4 = new javax.swing.JMenu();
+        jMenuBar3 = new javax.swing.JMenuBar();
+        jMenu5 = new javax.swing.JMenu();
+        jMenu6 = new javax.swing.JMenu();
+        jMenuBar4 = new javax.swing.JMenuBar();
+        jMenu8 = new javax.swing.JMenu();
+        jMenu9 = new javax.swing.JMenu();
+        jMenuBar5 = new javax.swing.JMenuBar();
+        jMenu10 = new javax.swing.JMenu();
+        jMenu11 = new javax.swing.JMenu();
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
+        mnPasien = new javax.swing.JMenu();
+        mnDokter = new javax.swing.JMenu();
+        mnRuangan = new javax.swing.JMenu();
+
+        jMenu3.setText("File");
+        jMenuBar2.add(jMenu3);
+
+        jMenu4.setText("Edit");
+        jMenuBar2.add(jMenu4);
+
+        jMenu5.setText("File");
+        jMenuBar3.add(jMenu5);
+
+        jMenu6.setText("Edit");
+        jMenuBar3.add(jMenu6);
+
+        jMenu8.setText("File");
+        jMenuBar4.add(jMenu8);
+
+        jMenu9.setText("Edit");
+        jMenuBar4.add(jMenu9);
+
+        jMenu10.setText("File");
+        jMenuBar5.add(jMenu10);
+
+        jMenu11.setText("Edit");
+        jMenuBar5.add(jMenu11);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -58,51 +90,19 @@ public class MainForm extends javax.swing.JFrame {
             .addGap(0, 279, Short.MAX_VALUE)
         );
 
-        jMenu1.setText("Master");
-
-        jMenuItem1.setText("Pasien");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        mnPasien.setText("Pasien Inap");
+        mnPasien.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                mnPasienActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        jMenuBar1.add(mnPasien);
 
-        jMenuItem2.setText("Dokter");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem2);
+        mnDokter.setText("Dokter");
+        jMenuBar1.add(mnDokter);
 
-        jMenuItem3.setText("Ruangan");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem3);
-
-        jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("Transaksi");
-
-        jMenuItem4.setText("Tambah Pasien");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
-            }
-        });
-        jMenu2.add(jMenuItem4);
-
-        jMenuItem5.setText("Tambah Dokter");
-        jMenu2.add(jMenuItem5);
-
-        jMenuItem6.setText("Tambah Ruangan");
-        jMenu2.add(jMenuItem6);
-
-        jMenuBar1.add(jMenu2);
+        mnRuangan.setText("Ruangan");
+        jMenuBar1.add(mnRuangan);
 
         setJMenuBar(jMenuBar1);
 
@@ -120,34 +120,10 @@ public class MainForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void mnPasienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnPasienActionPerformed
         // TODO add your handling code here:
-        DaftarDokter dd = new DaftarDokter();
-        jDesktopPane1.add(dd);
-        dd.setVisible(true);
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
-
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
-        DaftarPasien dp = new DaftarPasien();
-        jDesktopPane1.add(dp);
-        dp.setVisible(true);
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
-
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        // TODO add your handling code here:
-        DaftarRuangan dr = new DaftarRuangan();
-        jDesktopPane1.add(dr);
-        dr.setVisible(true);
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
-
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        // TODO add your handling code here:
-        InputPasien ip = new InputPasien();
-        jDesktopPane1.add(ip);
-        ip.setVisible(true);
         
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
+    }//GEN-LAST:event_mnPasienActionPerformed
 
     /**
      * @param args the command line arguments
@@ -191,18 +167,52 @@ public class MainForm extends javax.swing.JFrame {
             }
             
         });
+ 
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane jDesktopPane1;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu10;
+    private javax.swing.JMenu jMenu11;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenu6;
+    private javax.swing.JMenu jMenu8;
+    private javax.swing.JMenu jMenu9;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuBar jMenuBar2;
+    private javax.swing.JMenuBar jMenuBar3;
+    private javax.swing.JMenuBar jMenuBar4;
+    private javax.swing.JMenuBar jMenuBar5;
+    private javax.swing.JMenu mnDokter;
+    private javax.swing.JMenu mnPasien;
+    private javax.swing.JMenu mnRuangan;
     // End of variables declaration//GEN-END:variables
+
+    public JMenu getMnDokter() {
+        return mnDokter;
+    }
+
+    public void setMnDokter(JMenu mnDokter) {
+        this.mnDokter = mnDokter;
+    }
+
+    public JMenu getMnPasien() {
+        return mnPasien;
+    }
+
+    public void setMnPasien(JMenu mnPasien) {
+        this.mnPasien = mnPasien;
+    }
+
+    public JMenu getMnRuangan() {
+        return mnRuangan;
+    }
+
+    public void setMnRuangan(JMenu mnRuangan) {
+        this.mnRuangan = mnRuangan;
+    }
+
+    
 }

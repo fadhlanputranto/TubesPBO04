@@ -18,15 +18,23 @@ public class PasienInap {
     public PasienInap() {
     }
 
-    public PasienInap(int idPasien,int idDokter,String diagnosa) {
-        pasien.setId(idPasien);
-        dokter.setId(idDokter);
-        diagnosa = diagnosa;
+   public PasienInap(int idPasien,int idDokter,String diagnosa) {
+        this.pasien = new Pasien();
+        this.dokter = new Dokter();
+        this.pasien.setId(idPasien);
+        this.dokter.setId(idDokter);
+        this.diagnosa = diagnosa;
     }
     
     public PasienInap(Pasien p, Dokter d) {
         pasien = p;
         setDokter(d);
+    }
+    
+    public PasienInap(Pasien p, Dokter d,String diagnosa) {
+        pasien = p;
+        setDokter(d);
+        this.diagnosa = diagnosa;
     }
 
 //    public void addDiagnosa(String diagnosa) {
@@ -52,10 +60,15 @@ public class PasienInap {
         return pasien;
     }
 
+    public String getDiagnosa() {
+        return diagnosa;
+    }
+    
+        
     public int getnDiagnosa() {
         return nDiagnosa;
     }
-
+    
 //    public String getDiagnosa(int i) {
 //        return diagnosa[i];
 //    }

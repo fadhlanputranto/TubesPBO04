@@ -12,6 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import model.Pasien;
+import model.PasienInap;
 import model.Ruangan;
 
 /**
@@ -182,7 +183,7 @@ public class DaftarPasien extends javax.swing.JFrame {
             for(int k = 0; k< r.getJumlahPasien();k++){
                 data[j][0] = String.valueOf( r.getDaftarPasienByIndex(k).getPasien().getId());
                 data[j][1] = r.getDaftarPasienByIndex(k).getPasien().getNama();
-                //data[j][2] = r.getDaftarPasienByIndex(j).getDiagnosa(i);
+                data[j][2] = r.getDaftarPasienByIndex(k).getDiagnosa();
                 data[j][3] = r.getDaftarPasienByIndex(k).getDokter().getNama();
                 data[j][4] = String.valueOf(r.getNo());
                 j++;
@@ -190,6 +191,24 @@ public class DaftarPasien extends javax.swing.JFrame {
             
         }
         TabelPasien.setModel(new DefaultTableModel(data, title));
+    }
+    
+    public PasienInap getViewPasienInap(ArrayList<Ruangan> listPasienInap,int selected){
+        int j = 0;
+        PasienInap pi;
+        String[][] data = new String[50][3];
+        for (int i = 0; i < listPasienInap.size(); i++){
+            Ruangan r = listPasienInap.get(i);
+            for(int k = 0; k< r.getJumlahPasien();k++){
+                data[j][0] = String.valueOf( r.getDaftarPasienByIndex(k).getPasien().getId());
+                data[j][1] = String.valueOf( r.getDaftarPasienByIndex(k).getDokter().getId());
+                data[j][2] = r.getDaftarPasienByIndex(k).getDiagnosa();
+                j++;
+            }
+            
+        }
+        
+        return pi = new PasienInap(Integer.parseInt(data[selected][0]),Integer.parseInt(data[selected][1]), data[selected][2]);
     }
     
 }

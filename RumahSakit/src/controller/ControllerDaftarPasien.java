@@ -5,16 +5,21 @@
  */
 package controller;
 
+import com.oracle.util.Checksums;
 import database.Database;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import model.AplikasiConsole;
 import model.Pasien;
+import model.PasienInap;
+import model.Ruangan;
 import view.DaftarPasien;
 
 /**
@@ -54,12 +59,22 @@ public class ControllerDaftarPasien extends MouseAdapter implements ActionListen
             }
         }else if(ae.getSource().equals(view.getBtnEdit())){
             try {
-                Pasien p = model.getPasien(selected);
+                PasienInap pi = view.getViewPasienInap(model.getPasienInap(), selected);
+                Pasien p = model.cariPasien(pi.getPasien().getId());
                 new ControllerInputPasien(model, p);
+                view.dispose();
             } catch (SQLException sQLException) {
+                    JOptionPane.showMessageDialog(view,"gagal");
             }
         }else if(ae.getSource().equals(view.getBtnHapusPasien())){
-            
+            try {
+                PasienInap pi = view.getViewPasienInap(model.getPasienInap(), selected);
+                model.updateHapusPasienInap(pi.getPasien(), model.cariNoRuangan(pi.getPasien().getId()));
+                view.dispose();
+                new ControllerDaftarPasien(model);
+            } catch (SQLException sQLException) {
+                 JOptionPane.showMessageDialog(view,"gagal");
+            }
         }
     }
     

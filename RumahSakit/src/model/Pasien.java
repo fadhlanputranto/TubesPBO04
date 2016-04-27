@@ -13,6 +13,11 @@ public class Pasien extends Orang{
     private String alamat;
     private int usia;
     private String jenisKelamin;
+
+    public Pasien() {
+        super(null, 0);
+    }
+    
     
     public Pasien(String nama, int id, String tlp) {
         super(nama, id);

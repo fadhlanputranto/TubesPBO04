@@ -32,34 +32,67 @@ public class AplikasiConsole {
     }
     
     //===== create
-    public void createPasienInap(Pasien p,String namaDokter,int noRuangan) throws SQLException{
+    public void createPasienInap(Pasien p,String namaDokter,int noRuangan,String diagnosa) throws SQLException{
         Dokter d = con.cariDokter(namaDokter);
         Ruangan r = con.cariRuangan(noRuangan);
         r.setDaftarPasien(r.getMaxPasien());
-        r.tambahPasienInap(p, d);;
+        r.tambahPasienInap(p, d,diagnosa);;
         con.savePasien(p);
         con.updateRuangan(r);
         con.savePasienInap(p, d, r);
     }      
     //=== Hapus
-
+    public void hapusPasien(Pasien p) throws SQLException{
+        con.hapusPasienInap(p.getId());
+    }
+    
+//    public void hapusDokter(Pasien p) throws SQLException{
+//        con.hapusPasienInap(p.getId());
+//    }
+//    
+//    public void hapusPasien(Pasien p) throws SQLException{
+//        con.hapusPasienInap(p.getId());
+//    }
     
     //==== Update
-    public void updatePasienInap(Pasien p,String namaDokter, int no) throws SQLException{
+    /**public void updateTambahPasienInap(Pasien p,String namaDokter, int no) throws SQLException{
         p = cariDeletePasienInap(p.getId());
-        Dokter d = cariDokter(namaDokter);
-        Ruangan r = cariRuangan(no);
+        Dokter d = con.cariDokter(namaDokter);
+        Ruangan r = con.cariRuangan(no);
+        r.setDaftarPasien(r.getMaxPasien());
         r.tambahPasienInap(p, d);
         con.updateRuangan(r);
         con.updatePasienINap(p, r, d);
         
         
+    }**/
+    
+    public void updatePasienInap(Pasien p,String namaDokter, int no) throws SQLException{
+        Dokter d = con.cariDokter(namaDokter);
+        Ruangan r = cariRuangan(no);
+        r.tambahPasienInap();
+        r.setJumlahPasien(r.getJumlahPasien()-1);
+        con.updateRuangan(r);
+        con.updatePasienINap(p, r, d);        
+    }
+    
+    public void updateHapusPasienInap(Pasien p, int no) throws SQLException{
+        Ruangan r = cariRuangan(no);
+        r.setJumlahPasien(r.getJumlahPasien()-1);
+        con.hapusPasienInap(p.getId());
+        con.updateRuangan(r);
+        
+        
+    }
+    
+    public void updateRuangan(Ruangan r) throws SQLException{
+        con.updateRuangan(r);
     }
     //==== GET
-    public Pasien getPasien(int selected) throws SQLException{
+    public PasienInap getPasienInap(int selected) throws SQLException{
         ArrayList<PasienInap> pi = con.loadPasienInap();
         PasienInap pai = pi.get(selected);
-        return cariPasien(pai.getPasien().getId());
+        return pai;
     }
     public ArrayList<Ruangan> getPasienInap() throws SQLException{
         return con.loadRuanganPasienInap();
@@ -80,6 +113,8 @@ public class AplikasiConsole {
      public  ArrayList<String> getComboRuangan() throws SQLException{
         return con.comboRuangan();
     }
+     //======= SET
+     
     //===== ADD 
     public void addPasien(Pasien p){
         pasien.add(p);
@@ -94,13 +129,8 @@ public class AplikasiConsole {
     }
     
     //==== CARI
-    public Pasien cariPasien(int id){        
-        for(int i=0;i<= pasien.size();i++){
-            if(pasien.get(i).getId() == id){
-                return pasien.get(i);
-            }
-        }
-        return null;
+    public Pasien cariPasien(int id) throws SQLException{        
+        return con.cariPasien(id);
     }
     
     public Dokter cariDokter(int id){        
@@ -121,14 +151,20 @@ public class AplikasiConsole {
         return null;
     }
     
-    public Ruangan cariRuangan(int no){
-        for(int i = 0;i< ruangan.size();i++){
-            if(ruangan.get(i).getNo() ==  no){
+    public Ruangan cariArrRuangan(int no){        
+        for(int i=0;i<= ruangan.size();i++){
+            if(ruangan.get(i).getNo() == no){
                 return ruangan.get(i);
             }
-            
         }
         return null;
+    }
+    
+    public int cariNoRuangan(int id) throws SQLException{
+        return con.cariNoRuangan(id);
+    }
+    public Ruangan cariRuangan(int no) throws SQLException{
+        return con.cariRuangan(no);
     }
     
     public Pasien cariDeletePasienInap(int id) throws SQLException{
@@ -139,13 +175,28 @@ public class AplikasiConsole {
                      ruangan.get(i).deletePasienInap(j);
                      con.updateRuangan(ruangan.get(i));
                     return p;
-             }
-            
+                }            
              }    
         }
         return null;
     }
+
+    public void setPasien(ArrayList<Pasien> pasien) {
+        this.pasien = pasien;
+    }
+
+    public void setDokter(ArrayList<Dokter> dokter) {
+        this.dokter = dokter;
+    }
+
+    public void setRuangan(ArrayList<Ruangan> ruangan) {
+        this.ruangan = ruangan;
+    }
     
+    
+    
+    //====================================
+   
     /**public int cariIndeks(int id){
          for(int i=0;i<= orang.size();i++){
              if(orang.get(i).getId() == id){

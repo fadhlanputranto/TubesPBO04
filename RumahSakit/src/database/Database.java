@@ -109,13 +109,11 @@ public class Database {
                 ru.setNo(i);
                 ru.setMaxPasien(rs.getInt("kapasitas"));
                 ru.setDaftarPasien(ru.getMaxPasien());
-                ru.tambahPasienInap(p, d);  
-                
+                ru.tambahPasienInap(p, d,rs.getString("diagnosa"));                  
             }else
-                ru.tambahPasienInap(p, d);
+                ru.tambahPasienInap(p, d,rs.getString("diagnosa"));
             if(rs.getInt("jml_pasien")==ru.getJumlahPasien())
-                tmp.add(ru);
-           
+                tmp.add(ru);           
         }
         return tmp;        
     }
@@ -218,4 +216,35 @@ public class Database {
           }
           return null;
       }
+       
+       public int cariNoRuangan(int id) throws SQLException{
+           String query = "select * from ruangan join pasien_inap using(no)"
+                   + "where id_pasien = '"+id+"'";
+           ResultSet rs = statement.executeQuery(query);
+           int i;
+           while(rs.next()){
+               i = rs.getInt("no");
+               return i;
+            }
+           return -1;
+       }
+       
+       //===== HAPUS
+       public void hapusPasienInap(int id) throws SQLException{
+           String query = "delete from pasien_inap where id_pasien = '"+id+"'";
+           statement.execute(query);
+           query = "delete from pasien where id_pasien = '"+id+"'";
+           statement.execute(query);           
+       }
+       
+       public void hapusPasien(int id) throws SQLException{
+           String query = "delete from dokter where id_pasien = '"+id+"'";
+           statement.execute(query);
+       }
+       
+       
+       public void hapusRuangan(int no) throws SQLException{
+           String query = "delete from dokter where no = '"+no+"'";
+           statement.execute(query);
+       }
 }

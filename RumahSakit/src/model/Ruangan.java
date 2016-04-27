@@ -37,10 +37,19 @@ public class Ruangan {
     }
      
     
-    public void tambahPasienInap(Pasien p, Dokter d){
-        PasienInap PI = new PasienInap(p,d);
+    public void tambahPasienInap(Pasien p, Dokter d,String diagnosa){
+        PasienInap PI = new PasienInap(p,d,diagnosa);
         if(jumlahPasien < maxPasien){
             daftarPasien[jumlahPasien] = PI;
+            jumlahPasien++;
+            setKetersediaan("Tersedia");
+        }
+        if(jumlahPasien == maxPasien)
+            setKetersediaan("penuh");
+    }
+    
+    public void tambahPasienInap(){
+        if(jumlahPasien < maxPasien){
             jumlahPasien++;
             setKetersediaan("Tersedia");
         }
@@ -111,18 +120,25 @@ public class Ruangan {
                 daftarPasien[j]=daftarPasien[j+1];
                 jumlahPasien = jumlahPasien-1;
             }
+            
         }
+        if(jumlahPasien < maxPasien){
+            setKetersediaan("Tersedia");
+        }
+        if(jumlahPasien == maxPasien)
+            setKetersediaan("penuh");
         
     }
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }
+     
+    
+    
+    
+    
+    
+    
+    
+    
+

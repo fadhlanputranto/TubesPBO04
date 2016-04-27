@@ -56,6 +56,15 @@ public class InputPasien extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         L = new javax.swing.JRadioButton();
         P = new javax.swing.JRadioButton();
+        btnBack = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        ckDBD = new javax.swing.JCheckBox();
+        ckTumor = new javax.swing.JCheckBox();
+        ckJantung = new javax.swing.JCheckBox();
+        ckMalaria = new javax.swing.JCheckBox();
+        ckStroke = new javax.swing.JCheckBox();
+        ckLeukimia = new javax.swing.JCheckBox();
+        lainNya = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Input Pasien");
@@ -112,19 +121,58 @@ public class InputPasien extends javax.swing.JFrame {
         tbnGrpJk.add(P);
         P.setText("Perempuan");
 
+        btnBack.setText("Back");
+
+        jLabel1.setText("Diagnosa");
+
+        ckDBD.setText("DBD");
+
+        ckTumor.setText("Tumor");
+
+        ckJantung.setText("Jantung");
+
+        ckMalaria.setText("Malaria");
+        ckMalaria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ckMalariaActionPerformed(evt);
+            }
+        });
+
+        ckStroke.setText("Stroke");
+
+        ckLeukimia.setText("Leukimia");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(113, 113, 113)
                 .addComponent(L)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(P)
-                .addContainerGap(284, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(ckJantung)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(ckLeukimia))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(btnTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(ckTumor)
+                                .addComponent(ckDBD))
+                            .addGap(68, 68, 68)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(ckMalaria)
+                                .addComponent(ckStroke))
+                            .addGap(0, 0, Short.MAX_VALUE)))
+                    .addComponent(lainNya, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -166,12 +214,33 @@ public class InputPasien extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(97, 97, 97)
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(L)
-                    .addComponent(P))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
-                .addComponent(btnTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ckDBD)
+                    .addComponent(ckMalaria))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ckTumor)
+                    .addComponent(ckStroke))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(L)
+                            .addComponent(P)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(ckJantung)
+                            .addComponent(ckLeukimia))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lainNya, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnBack, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnTambah, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -225,6 +294,10 @@ public class InputPasien extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cbNamaDokterActionPerformed
 
+    private void ckMalariaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckMalariaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ckMalariaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -232,9 +305,17 @@ public class InputPasien extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton L;
     private javax.swing.JRadioButton P;
+    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnTambah;
     private javax.swing.JComboBox<String> cbNamaDokter;
     private javax.swing.JComboBox<String> cbNoRuangan;
+    private javax.swing.JCheckBox ckDBD;
+    private javax.swing.JCheckBox ckJantung;
+    private javax.swing.JCheckBox ckLeukimia;
+    private javax.swing.JCheckBox ckMalaria;
+    private javax.swing.JCheckBox ckStroke;
+    private javax.swing.JCheckBox ckTumor;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -244,6 +325,7 @@ public class InputPasien extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField lainNya;
     private javax.swing.JTextArea taAlamat;
     private javax.swing.ButtonGroup tbnGrpJk;
     private javax.swing.JTextField tfId;
@@ -283,39 +365,54 @@ public class InputPasien extends javax.swing.JFrame {
 
     public void setTfId(int id) {
         tfId.setText(String.valueOf(id));
+        tfId.setEditable(false);
     }
+     public void setTfId(){
+         tfId.setEditable(false);
+     }
 
     public void setTfNama(String s) {
         tfNama.setText(s);
+        tfNama.setEditable(false);
     }
 
     public void setTfTelepon(String s) {
         tfTelepon.setText(s);
+        tfTelepon.setEditable(false);
     }
 
     public void setTaAlamat(String s) {
        taAlamat.setText(s);
+       
     }
 
         
     public void setTfUsia(int usia) {
         tfUsia.setText(String.valueOf(usia));
+        tfUsia.setEditable(false);
     }
 
     public void addListener(ActionListener e){
         btnTambah.addActionListener(e);
+        btnBack.addActionListener(e);
     }
 
     public JButton getBtnTambah() {
         return btnTambah;
     }
 
+    public JButton getBtnBack() {
+        return btnBack;
+    }
+    
+    
+
     public String getTaAlamat() {
         return taAlamat.getText();
     }
 
-    public String getTfId() {
-        return tfId.getText();
+    public int getTfId() {
+        return Integer.parseInt(tfId.getText());
     }
 
     public String getTfNama() {
@@ -330,6 +427,37 @@ public class InputPasien extends javax.swing.JFrame {
         return Integer.parseInt(tfUsia.getText());
     }
     
+    public String getDiagnosa(){
+        String s = "";
+        if(ckDBD.isSelected()){
+            s = s + " " + ckDBD.getText();
+        }
+        
+        if(ckJantung.isSelected()){
+            s = s + " " + ckJantung.getText();
+        }
+        
+        if(ckLeukimia.isSelected()){
+            s = s + " " + ckLeukimia.getText();
+        }
+        
+        if(ckMalaria.isSelected()){
+            s = s + " " + ckMalaria.getText();
+        }
+        
+        if(ckStroke.isSelected()){
+            s = s + " " + ckStroke.getText();
+        }
+        
+        if(ckTumor.isSelected()){
+            s = s + " " + ckTumor.getText();
+        }
+        
+        if(lainNya.getText() != ""){
+            s = s + " " + lainNya.getText();
+        }
+        return s;
+    }
     
 //=======================untuk edit========= 
 //=======================RESET==============

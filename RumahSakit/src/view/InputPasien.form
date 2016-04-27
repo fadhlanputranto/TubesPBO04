@@ -28,16 +28,40 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="-2" pref="113" max="-2" attributes="0"/>
               <Component id="L" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="P" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="284" max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="btnTambah" min="-2" pref="112" max="-2" attributes="0"/>
+              <EmptySpace pref="70" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="ckJantung" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="ckLeukimia" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Component id="btnBack" min="-2" pref="70" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="btnTambah" min="-2" pref="112" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="ckTumor" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="ckDBD" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="ckMalaria" min="-2" max="-2" attributes="0"/>
+                              <Component id="ckStroke" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Component id="lainNya" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
           </Group>
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
@@ -95,13 +119,41 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="L" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="P" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="ckDBD" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="ckMalaria" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="102" max="32767" attributes="0"/>
-              <Component id="btnTambah" min="-2" pref="67" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="ckTumor" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="ckStroke" alignment="1" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="L" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="P" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="ckJantung" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="ckLeukimia" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="lainNya" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace pref="93" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="btnBack" max="32767" attributes="0"/>
+                  <Component id="btnTambah" pref="67" max="32767" attributes="0"/>
+              </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
@@ -265,6 +317,51 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Perempuan"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnBack">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Back"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Diagnosa"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="ckDBD">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="DBD"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="ckTumor">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Tumor"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="ckJantung">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Jantung"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="ckMalaria">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Malaria"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ckMalariaActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="ckStroke">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Stroke"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="ckLeukimia">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Leukimia"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="lainNya">
     </Component>
   </SubComponents>
 </Form>
