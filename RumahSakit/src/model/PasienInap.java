@@ -68,21 +68,5 @@ public class PasienInap {
     public int getnDiagnosa() {
         return nDiagnosa;
     }
-    
-//    public String getDiagnosa(int i) {
-//        return diagnosa[i];
-//    }
-//    
-//    public void deleteDiagnosa(int i){
-//        if(diagnosa[i+1]==null){
-//            diagnosa[i]=null;
-//            nDiagnosa = nDiagnosa-1;
-//        }else {
-//            for(int j = i;j<nDiagnosa;j++){
-//                diagnosa[j]=diagnosa[j+1];
-//                nDiagnosa = nDiagnosa-1;
-//            }
-//        }
-//        
-//    }
+ 
 }

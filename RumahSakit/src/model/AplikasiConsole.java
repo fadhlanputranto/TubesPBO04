@@ -69,26 +69,7 @@ public class AplikasiConsole {
     public void hapusRuangan(Ruangan r) throws SQLException{
         con.hapusRuangan(r.getNo());
     }
-//    public void hapusDokter(Pasien p) throws SQLException{
-//        con.hapusPasienInap(p.getId());
-//    }
-//    
-//    public void hapusPasien(Pasien p) throws SQLException{
-//        con.hapusPasienInap(p.getId());
-//    }
-    
-    //==== Update
-    /**public void updateTambahPasienInap(Pasien p,String namaDokter, int no) throws SQLException{
-        p = cariDeletePasienInap(p.getId());
-        Dokter d = con.cariDokter(namaDokter);
-        Ruangan r = con.cariRuangan(no);
-        r.setDaftarPasien(r.getMaxPasien());
-        r.tambahPasienInap(p, d);
-        con.updateRuangan(r);
-        con.updatePasienINap(p, r, d);
-        
-        
-    }**/
+
     
     public void updatePasienInap(Pasien p,String namaDokter, int no) throws SQLException{
         Dokter d = con.cariDokter(namaDokter);
