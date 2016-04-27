@@ -6,6 +6,7 @@
 package view;
 
 import java.awt.event.ActionListener;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
@@ -40,6 +41,7 @@ public class InputDokter extends javax.swing.JFrame {
         tfKeahlian = new javax.swing.JTextField();
         btnTambah = new javax.swing.JButton();
         Id = new javax.swing.JLabel();
+        btnBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Input dokter");
@@ -52,7 +54,9 @@ public class InputDokter extends javax.swing.JFrame {
 
         jLabel4.setText("Keahlian");
 
-        btnTambah.setText("btnTambah");
+        btnTambah.setText("Tambah");
+
+        btnBack.setText("Back");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -73,7 +77,10 @@ public class InputDokter extends javax.swing.JFrame {
                                 .addComponent(Id, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(tfTelepon, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE))))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(btnTambah)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(btnTambah))
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jLabel4)
                             .addGap(18, 18, 18)
@@ -100,7 +107,9 @@ public class InputDokter extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(tfKeahlian, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(btnTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnTambah, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+                    .addComponent(btnBack, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -110,40 +119,11 @@ public class InputDokter extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(InputDokter.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(InputDokter.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(InputDokter.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InputDokter.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new InputDokter().setVisible(true);
-            }
-        });
-    }
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Id;
+    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnTambah;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -154,39 +134,30 @@ public class InputDokter extends javax.swing.JFrame {
     private javax.swing.JTextField tfTelepon;
     // End of variables declaration//GEN-END:variables
 
-    public JLabel getTfId() {
-        return Id;
+    public String getTfNama() {
+        return tfNama.getText();
     }
 
-    public void setTfId(JLabel Id) {
-        this.Id = Id;
+    public String getTfKeahlian() {
+        return tfKeahlian.getText();
     }
 
-    public JTextField getTfKeahlian() {
-        return tfKeahlian;
+    public String getTfTelepon() {
+        return tfTelepon.getText();
     }
 
-    public void setTfKeahlian(JTextField tfKeahlian) {
-        this.tfKeahlian = tfKeahlian;
+    public JButton getBtnTambah() {
+        return btnTambah;
     }
 
-    public JTextField getTfNama() {
-        return tfNama;
+    public JButton getBtnBack() {
+        return btnBack;
     }
-
-    public void setTfNama(JTextField tfNama) {
-        this.tfNama = tfNama;
-    }
-
-    public JTextField getTfTelepon() {
-        return tfTelepon;
-    }
-
-    public void setTfTelepon(JTextField tfTelepon) {
-        this.tfTelepon = tfTelepon;
-    }
-
+    
     public void addListener(ActionListener e){
         btnTambah.addActionListener(e);
+        btnBack.addActionListener(e);
     }
+
+
 }

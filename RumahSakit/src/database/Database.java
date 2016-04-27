@@ -71,9 +71,9 @@ public class Database {
         p.setId(generatedId);
     }
     
-    public void savePasienInap(Pasien p,Dokter d, Ruangan r) throws SQLException{
-       String query = " insert into pasien_inap(id_pasien,id_dokter,no) values ('"+p.getId()+"',"
-                + "'"+d.getId()+"','"+r.getNo()+"')";
+    public void savePasienInap(Pasien p,Dokter d, Ruangan r,String diagnosa) throws SQLException{
+       String query = " insert into pasien_inap(id_pasien,id_dokter,diagnosa,no) values ('"+p.getId()+"',"
+                + "'"+d.getId()+"','"+diagnosa+"','"+r.getNo()+"')";
        statement.executeUpdate(query);
     }
     //======= LOAD
@@ -94,7 +94,8 @@ public class Database {
         String query = "select * from ruangan,pasien_inap,pasien,dokter "
                 + "where ruangan.no = pasien_inap.no "
                 + "AND pasien_inap.id_pasien = pasien.id_pasien "
-                + "AND pasien_inap.id_dokter = dokter.id_dokter  ";
+                + "AND pasien_inap.id_dokter = dokter.id_dokter "
+                + "order by ruangan.no asc ";
         ResultSet rs = statement.executeQuery(query);
         while(rs.next()){
             Pasien p = new Pasien(rs.getString("nama_pasien"), rs.getInt("id_pasien"), rs.getString("tlp_pasien"),
@@ -123,8 +124,8 @@ public class Database {
         String query = "select * from ruangan";
         ResultSet rs = statement.executeQuery(query);
         while(rs.next()){
-            Ruangan r = new Ruangan(rs.getInt("no"), rs.getInt("jml_pasien"),
-                    rs.getInt("kapasitas"), rs.getString("status"));
+            Ruangan r = new Ruangan(rs.getInt(1), rs.getInt(3),
+                    rs.getInt(2), rs.getString(4));
            tmp.add(r);
         }
         return tmp;
@@ -144,7 +145,7 @@ public class Database {
     
     public ArrayList<Dokter> loadDokter() throws SQLException{
         ArrayList<Dokter> tmp = new ArrayList();
-        String query = "select * from ruangan";
+        String query = "select * from dokter";
         ResultSet rs = statement.executeQuery(query);
         while(rs.next()){
             Dokter d = new Dokter(rs.getString("nama_dokter"),rs.getInt("id_dokter"), 
@@ -236,15 +237,15 @@ public class Database {
            query = "delete from pasien where id_pasien = '"+id+"'";
            statement.execute(query);           
        }
+            
        
-       public void hapusPasien(int id) throws SQLException{
-           String query = "delete from dokter where id_pasien = '"+id+"'";
+       public void hapusRuangan(int no) throws SQLException{
+           String query = "delete from ruangan where no = '"+no+"'";
            statement.execute(query);
        }
        
-       
-       public void hapusRuangan(int no) throws SQLException{
-           String query = "delete from dokter where no = '"+no+"'";
+        public void hapusDokter(int id) throws SQLException{
+           String query = "delete from dokter where id_dokter = '"+id+"'";
            statement.execute(query);
        }
 }

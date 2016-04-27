@@ -6,14 +6,20 @@
 package view;
 
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.util.ArrayList;
 import javax.swing.JButton;
+import javax.swing.JMenuItem;
+import javax.swing.JPopupMenu;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import model.Ruangan;
 
 /**
  *
  * @author Asus A450CA
  */
-public class DaftarRuangan extends javax.swing.JInternalFrame {
+public class DaftarRuangan extends javax.swing.JFrame {
 
     /**
      * Creates new form DaftarRuangan
@@ -31,6 +37,10 @@ public class DaftarRuangan extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        mnPasien = new javax.swing.JMenuItem();
+        mnDokter = new javax.swing.JMenuItem();
+        mnRuangan = new javax.swing.JMenuItem();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelRuangan = new javax.swing.JTable(){
             public boolean isCellEditable(int rowIndex, int colIndex) {
@@ -40,10 +50,15 @@ public class DaftarRuangan extends javax.swing.JInternalFrame {
         btnHapusRuangan = new javax.swing.JButton();
         btnTambahRuangan = new javax.swing.JButton();
 
-        setClosable(true);
-        setIconifiable(true);
-        setMaximizable(true);
-        setResizable(true);
+        mnPasien.setText("jMenuItem1");
+        jPopupMenu1.add(mnPasien);
+
+        mnDokter.setText("jMenuItem2");
+        jPopupMenu1.add(mnDokter);
+
+        mnRuangan.setText("jMenuItem3");
+        jPopupMenu1.add(mnRuangan);
+
         setTitle("Ruangan");
 
         tabelRuangan.setModel(new javax.swing.table.DefaultTableModel(
@@ -92,15 +107,44 @@ public class DaftarRuangan extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnHapusRuangan;
     private javax.swing.JButton btnTambahRuangan;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JMenuItem mnDokter;
+    private javax.swing.JMenuItem mnPasien;
+    private javax.swing.JMenuItem mnRuangan;
     private javax.swing.JTable tabelRuangan;
     // End of variables declaration//GEN-END:variables
     
+    public JMenuItem getMnDokter() {
+        return mnDokter;
+    }
     
+     public void setMnDokter() {
+      this.mnDokter.setText("Daftar Dokter");
+    }
+
+    public JMenuItem getMnPasien() {
+        return mnPasien;
+    }
+
+    public void setMnPasien() {
+        this.mnPasien.setText("Daftar Pasien");
+    }
+
+    public JMenuItem getMnRuangan() {
+        return mnRuangan;
+    }
+
+    public void setMnRuangan() {
+        this.mnRuangan.setText("Daftar Ruangan");
+    }
     
     public void addListener(ActionListener e){
         btnHapusRuangan.addActionListener(e);
         btnTambahRuangan.addActionListener(e);
+        mnPasien.addActionListener(e);
+        mnDokter.addActionListener(e);
+        mnRuangan.addActionListener(e);
     }
 
     public JButton getBtnHapusRuangan() {
@@ -115,5 +159,35 @@ public class DaftarRuangan extends javax.swing.JInternalFrame {
         return tabelRuangan;
     }
     
+     public int getSelectedDokter(){
+        return tabelRuangan.getSelectedRow();
+    }
+     
+    public void addAdapter(MouseAdapter me){
+        tabelRuangan.addMouseListener(me);
+    }
+
+    public JPopupMenu getjPopupMenu1() {
+        return jPopupMenu1;
+    }
     
+    
+    //====================================================================
+    public void viewRuangan(ArrayList<Ruangan> listRuangan){
+         String[] title = {
+            "no Ruangan", "Jumlah Pasien Inap", "Kapasitas", "Status"
+        };
+        String[][] data = new String[listRuangan.size()][4];
+        for (int i = 0; i < listRuangan.size(); i++){
+            Ruangan r = listRuangan.get(i);           
+                data[i][0] = String.valueOf(r.getNo());
+                data[i][1] = String.valueOf( r.getJumlahPasien());
+                data[i][2] = String.valueOf( r.getMaxPasien());
+                data[i][3] = r.getKetersediaan();
+                
+            
+        }
+        tabelRuangan.setModel(new DefaultTableModel(data, title));
+    }
+
 }

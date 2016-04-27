@@ -74,7 +74,7 @@ public class ControllerInputPasien implements ActionListener{
                   p = new Pasien(view.getTfNama(),view.getTfId(), view.getTfTelepon(),view.getTaAlamat(),view.getTfUsia()
                     , view.getJenisKelamin() );
                 try {
-                    model.setRuangan(model.getPasienInap());
+                    model.setRuangan(model.getRuanganPasienInap());
                     model.updatePasienInap(p, view.getCbNamaDokter(), view.getCbNoRuangan());
                     new ControllerDaftarPasien(model);
                 } catch (SQLException ex) {

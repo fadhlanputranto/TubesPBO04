@@ -6,12 +6,15 @@
 package view;
 
 import com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel;
+import java.awt.event.ActionListener;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
+import javax.swing.JMenuItem;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import model.AplikasiConsole;
 
 /**
  *
@@ -50,8 +53,11 @@ public class MainForm extends javax.swing.JFrame {
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnPasien = new javax.swing.JMenu();
+        itmPasien = new javax.swing.JMenuItem();
         mnDokter = new javax.swing.JMenu();
+        itmDokter = new javax.swing.JMenuItem();
         mnRuangan = new javax.swing.JMenu();
+        itmRuangan = new javax.swing.JMenuItem();
 
         jMenu3.setText("File");
         jMenuBar2.add(jMenu3);
@@ -90,18 +96,30 @@ public class MainForm extends javax.swing.JFrame {
             .addGap(0, 279, Short.MAX_VALUE)
         );
 
-        mnPasien.setText("Pasien Inap");
+        mnPasien.setText("Pasien");
         mnPasien.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mnPasienActionPerformed(evt);
             }
         });
+
+        itmPasien.setText("List Pasien");
+        mnPasien.add(itmPasien);
+
         jMenuBar1.add(mnPasien);
 
         mnDokter.setText("Dokter");
+
+        itmDokter.setText("List Dokter");
+        mnDokter.add(itmDokter);
+
         jMenuBar1.add(mnDokter);
 
         mnRuangan.setText("Ruangan");
+
+        itmRuangan.setText("List Ruangan");
+        mnRuangan.add(itmRuangan);
+
         jMenuBar1.add(mnRuangan);
 
         setJMenuBar(jMenuBar1);
@@ -128,49 +146,53 @@ public class MainForm extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-        * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-       //</editor-fold>
-        //</editor-fold>
-         try {
-            UIManager.setLookAndFeel(new NimbusLookAndFeel());//ini untuk look and feel (tampilannya nimbuz)
-        } catch (UnsupportedLookAndFeelException ex) {
-            Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                 MainForm main = new MainForm();
-               main.setExtendedState(JFrame.MAXIMIZED_BOTH);//ini untuk maximaze pas pertama kali aplikasi dijalankan
-                main.setVisible(true);
-            }
-            
-        });
- 
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//        * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(MainForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(MainForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(MainForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(MainForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//       //</editor-fold>
+//        //</editor-fold>
+//         try {
+//            UIManager.setLookAndFeel(new NimbusLookAndFeel());//ini untuk look and feel (tampilannya nimbuz)
+//        } catch (UnsupportedLookAndFeelException ex) {
+//            Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            @Override
+//            public void run() {
+//                 MainForm main = new MainForm();
+//               main.setExtendedState(JFrame.MAXIMIZED_BOTH);//ini untuk maximaze pas pertama kali aplikasi dijalankan
+//                main.setVisible(true);
+//            }
+//            
+//        });
+//        
+// 
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem itmDokter;
+    private javax.swing.JMenuItem itmPasien;
+    private javax.swing.JMenuItem itmRuangan;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenu jMenu10;
     private javax.swing.JMenu jMenu11;
@@ -190,29 +212,37 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JMenu mnRuangan;
     // End of variables declaration//GEN-END:variables
 
-    public JMenu getMnDokter() {
-        return mnDokter;
+
+public void addListener(ActionListener e){
+        itmDokter.addActionListener(e);
+        itmPasien.addActionListener(e);
+        itmRuangan.addActionListener(e);
     }
 
-    public void setMnDokter(JMenu mnDokter) {
-        this.mnDokter = mnDokter;
+    public JMenuItem getItmDokter() {
+        return itmDokter;
     }
 
-    public JMenu getMnPasien() {
-        return mnPasien;
+    public void setItmDokter(JMenuItem itmDokter) {
+        this.itmDokter = itmDokter;
     }
 
-    public void setMnPasien(JMenu mnPasien) {
-        this.mnPasien = mnPasien;
+    public JMenuItem getItmPasien() {
+        return itmPasien;
     }
 
-    public JMenu getMnRuangan() {
-        return mnRuangan;
+    public void setItmPasien(JMenuItem itmPasien) {
+        this.itmPasien = itmPasien;
     }
 
-    public void setMnRuangan(JMenu mnRuangan) {
-        this.mnRuangan = mnRuangan;
+    public JMenuItem getItmRuangan() {
+        return itmRuangan;
     }
 
-    
+    public void setItmRuangan(JMenuItem itmRuangan) {
+        this.itmRuangan = itmRuangan;
+    }
+
+
+
 }

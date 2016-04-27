@@ -5,10 +5,14 @@
  */
 package view;
 
+import java.awt.Component;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import javax.swing.JButton;
+import javax.swing.JMenuItem;
+import javax.swing.JPopupMenu;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import model.Pasien;
@@ -37,6 +41,10 @@ public class DaftarPasien extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        mnPasien = new javax.swing.JMenuItem();
+        mnDokter = new javax.swing.JMenuItem();
+        mnRuangan = new javax.swing.JMenuItem();
         jScrollPane1 = new javax.swing.JScrollPane();
         TabelPasien = new javax.swing.JTable(){
             public boolean isCellEditable(int rowIndex, int colIndex) {
@@ -49,6 +57,20 @@ public class DaftarPasien extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         btnEdit = new javax.swing.JButton();
+
+        mnPasien.setText("jMenuItem1");
+        mnPasien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnPasienActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(mnPasien);
+
+        mnDokter.setText("jMenuItem2");
+        jPopupMenu1.add(mnDokter);
+
+        mnRuangan.setText("jMenuItem3");
+        jPopupMenu1.add(mnRuangan);
 
         setTitle("Pasien INAP");
 
@@ -129,6 +151,11 @@ public class DaftarPasien extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void mnPasienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnPasienActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_mnPasienActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TabelPasien;
@@ -136,15 +163,50 @@ public class DaftarPasien extends javax.swing.JFrame {
     private javax.swing.JButton btnHapusPasien;
     private javax.swing.JButton btnPasienBaru;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JMenuItem mnDokter;
+    private javax.swing.JMenuItem mnPasien;
+    private javax.swing.JMenuItem mnRuangan;
     // End of variables declaration//GEN-END:variables
 
     public JTable getTabelPasien() {
         return TabelPasien;
     }
 
+    public JMenuItem getMnDokter() {
+        return mnDokter;
+    }
+
+    public void setMnDokter() {
+      this.mnDokter.setText("Daftar Dokter");
+    }
+
+    public JMenuItem getMnPasien() {
+        return mnPasien;
+    }
+
+    public void setMnPasien() {
+        this.mnPasien.setText("Daftar Pasien");
+    }
+
+    public JMenuItem getMnRuangan() {
+        return mnRuangan;
+    }
+
+    public void setMnRuangan() {
+        this.mnRuangan.setText("Daftar Ruangan");
+    }
+
+    
+    public JPopupMenu getjPopupMenu1() {
+        return jPopupMenu1;
+    }
+    
+    
+ 
     public JButton getBtnHapusPasien() {
         return btnHapusPasien;
     }
@@ -162,11 +224,16 @@ public class DaftarPasien extends javax.swing.JFrame {
         btnHapusPasien.addActionListener(e);
         btnPasienBaru.addActionListener(e);
         btnEdit.addActionListener(e);
+        mnPasien.addActionListener(e);
+        mnDokter.addActionListener(e);
+        mnRuangan.addActionListener(e);
     }
     
     public  void addAdapter(MouseAdapter me){
-        TabelPasien.addMouseListener(me);        
+        TabelPasien.addMouseListener(me);  
+       
     }
+   
     
     public int getSelectedPasien(){
         return TabelPasien.getSelectedRow();

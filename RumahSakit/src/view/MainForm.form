@@ -78,21 +78,42 @@
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="mnPasien">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Pasien Inap"/>
+            <Property name="text" type="java.lang.String" value="Pasien"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnPasienActionPerformed"/>
           </Events>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="itmPasien">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="List Pasien"/>
+              </Properties>
+            </MenuItem>
+          </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="mnDokter">
           <Properties>
             <Property name="text" type="java.lang.String" value="Dokter"/>
           </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="itmDokter">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="List Dokter"/>
+              </Properties>
+            </MenuItem>
+          </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="mnRuangan">
           <Properties>
             <Property name="text" type="java.lang.String" value="Ruangan"/>
           </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="itmRuangan">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="List Ruangan"/>
+              </Properties>
+            </MenuItem>
+          </SubComponents>
         </Menu>
       </SubComponents>
     </Menu>

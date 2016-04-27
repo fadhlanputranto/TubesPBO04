@@ -16,14 +16,16 @@ public class Dokter extends Orang{
         super(null, 0);
     }
 
-    
-    public Dokter(String nama, int id, String tlp) {
-        super(nama, id);
-        super.setTlp(tlp);
+    public Dokter(String nama,int id,String specialis, String tlp) {
+        super(nama, id, tlp);
+        this.specialis = specialis;
     }
 
-    public Dokter(String nama, int id,String specialis, String tlp) {
-        super(nama, id, tlp);
+    
+    
+
+    public Dokter(String nama,String specialis, String tlp) {
+        super(nama, tlp);
         this.specialis = specialis;
     }
     

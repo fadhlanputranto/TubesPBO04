@@ -7,6 +7,7 @@ package controller;
 
 import com.oracle.util.Checksums;
 import database.Database;
+import java.awt.Component;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
@@ -34,19 +35,39 @@ public class ControllerDaftarPasien extends MouseAdapter implements ActionListen
     public ControllerDaftarPasien(AplikasiConsole model) throws SQLException {
         this.model = model;
         view = new DaftarPasien();
-        view.viewPasienIinap(model.getPasienInap());
+        view.viewPasienIinap(model.getRuanganPasienInap());
         view.addListener(this);
         view.addAdapter(this);
         view.setVisible(true);
+        view.setMnPasien();
+        view.setMnDokter();
+        view.setMnRuangan();
     }
 
     @Override
     public void mouseClicked(MouseEvent me) {
        if(me.getSource().equals(view.getTabelPasien())){
             selected = view.getSelectedPasien();
-            
-        }
+       }
+        
+       if(me.getButton() == MouseEvent.BUTTON3){
+            view.getjPopupMenu1().show((Component)me.getSource(),me.getX(),me.getY());
+       }
     }
+            
+        
+
+    @Override
+    public void mousePressed(MouseEvent me) {
+       if (me.isPopupTrigger()) {
+        
+    } //To change body of generated methods, choose Tools | Templates.
+    }
+
+
+   
+    
+    
 
     @Override
     public void actionPerformed(ActionEvent ae) {
@@ -59,7 +80,7 @@ public class ControllerDaftarPasien extends MouseAdapter implements ActionListen
             }
         }else if(ae.getSource().equals(view.getBtnEdit())){
             try {
-                PasienInap pi = view.getViewPasienInap(model.getPasienInap(), selected);
+                PasienInap pi = view.getViewPasienInap(model.getRuanganPasienInap(), selected);
                 Pasien p = model.cariPasien(pi.getPasien().getId());
                 new ControllerInputPasien(model, p);
                 view.dispose();
@@ -68,16 +89,37 @@ public class ControllerDaftarPasien extends MouseAdapter implements ActionListen
             }
         }else if(ae.getSource().equals(view.getBtnHapusPasien())){
             try {
-                PasienInap pi = view.getViewPasienInap(model.getPasienInap(), selected);
+                PasienInap pi = view.getViewPasienInap(model.getRuanganPasienInap(), selected);
                 model.updateHapusPasienInap(pi.getPasien(), model.cariNoRuangan(pi.getPasien().getId()));
                 view.dispose();
                 new ControllerDaftarPasien(model);
             } catch (SQLException sQLException) {
                  JOptionPane.showMessageDialog(view,"gagal");
             }
+        }else if(ae.getSource().equals(view.getMnPasien())){
+            try {
+                new ControllerDaftarPasien(model);
+                view.dispose();
+            } catch (SQLException sQLException) {
+            }
+        }else if(ae.getSource().equals(view.getMnDokter())){
+            try {
+                new ControllerDaftarDokter(model);
+                view.dispose();
+            } catch (SQLException sQLException) {
+            }
+        }else if(ae.getSource().equals(view.getMnRuangan())){           
+                try {
+               new ControllerDaftarRuangan(model);
+               view.dispose();
+           } catch (SQLException sQLException) {
+           }           
         }
+            
+        
     }
-    
-    
-    
 }
+   
+    
+    
+    
