@@ -74,7 +74,7 @@ public class ControllerDaftarRuangan extends MouseAdapter implements ActionListe
                    new ControllerDaftarRuangan(model);
                    view.dispose();
                }else{
-                   JOptionPane.showMessageDialog(view,"Dokter Sedang Terisi");
+                   JOptionPane.showMessageDialog(view,"Ruangan Sedang digunakan");
                    new ControllerDaftarRuangan(model);
                    view.dispose();
                }                   
