@@ -174,10 +174,15 @@ public class DaftarRuangan extends javax.swing.JFrame {
     
     //====================================================================
     public void viewRuangan(ArrayList<Ruangan> listRuangan){
-         String[] title = {
+        int t;
+        if(listRuangan.size() == 0 )
+            t = 1;
+        else 
+            t = listRuangan.size(); 
+        String[] title = {
             "no Ruangan", "Jumlah Pasien Inap", "Kapasitas", "Status"
         };
-        String[][] data = new String[listRuangan.size()][4];
+        String[][] data = new String[t][4];
         for (int i = 0; i < listRuangan.size(); i++){
             Ruangan r = listRuangan.get(i);           
                 data[i][0] = String.valueOf(r.getNo());

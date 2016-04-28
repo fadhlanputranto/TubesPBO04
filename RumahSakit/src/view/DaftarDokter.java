@@ -182,10 +182,15 @@ public class DaftarDokter extends javax.swing.JFrame {
     
     //==========================================
     public void viewDokter(ArrayList<Dokter> listDokter){
+        int t;
+        if(listDokter.size() == 0 )
+            t = 1;
+        else 
+            t = listDokter.size();
          String[] title = {
             "id Dokter", "Nama Dokter", "Keahlian", "Telepon"
         };
-        String[][] data = new String[listDokter.size()][4];
+        String[][] data = new String[t][4];
         for (int i = 0; i < listDokter.size(); i++){
             Dokter d = listDokter.get(i);           
                 data[i][0] = String.valueOf( d.getId());
