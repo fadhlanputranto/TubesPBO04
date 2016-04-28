@@ -37,12 +37,7 @@ public class PasienInap {
         this.diagnosa = diagnosa;
     }
 
-//    public void addDiagnosa(String diagnosa) {
-//        if(nDiagnosa < 20){
-//            this.diagnosa[nDiagnosa] = diagnosa;
-//            nDiagnosa++;
-//        }else System.out.println("Penuh");    
-//    }
+
     
     public void setDokter(Dokter d) {
         dokter = d;
